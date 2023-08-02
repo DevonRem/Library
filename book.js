@@ -19,7 +19,7 @@ function addBookToLibrary(bookv) {
 
 function display() {
     if(myLibrary != '') {
-        const card = document.createElement('div');
+        let card = document.createElement('div');
         card.classList.add('card');
         card.style.backgroundColor = 'lightblue';
         card.style.height = "50px";
@@ -29,6 +29,43 @@ function display() {
         content.appendChild(card);
         card.textContent = myLibrary;
         myLibrary.shift();
+
+        const readstatus = document.createElement('button');
+        readstatus.classList.add('btn1');
+        readstatus.setAttribute("type", "button");
+        content.appendChild(readstatus);
+        const btntext2 = document.createElement('p');
+        btntext2.textContent = 'Change Status';
+        readstatus.appendChild(btntext2);
+
+        const removebk = document.createElement('button');
+        removebk.classList.add('btn2');
+        removebk.setAttribute("type", "button");
+        content.appendChild(removebk);
+        const btntext3 = document.createElement('p');
+        btntext3.textContent = 'remove';
+        removebk.appendChild(btntext3);
+
+
+        readstatus.addEventListener('click', function(e) {
+
+            if (card.textContent.includes('Not read')){
+                card.textContent = card.textContent.replace('Not read', 'Read!');
+            }
+            else {
+                card.textContent = card.textContent.replace('Read!', 'Not read');
+            }
+        })
+
+        removebk.addEventListener('click', function(e) {
+            card.remove();
+            const button1 = document.querySelector('.btn1');
+            button1.remove();
+            const button2 = document.querySelector('.btn2');
+            button2.remove();
+        })
+
+
     }
 }
 
