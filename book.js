@@ -1,5 +1,22 @@
 let myLibrary = [];
 
+//using class now instead of plain constructor
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.info = function() {
+            //returns as array
+            //return [this.title, this.author, this.pages, this.read]; 
+            //returns as string
+            return `${this.title} ${this.author} ${this.pages} ${this.read}`;
+        }
+    }
+    
+}
+/*
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -12,6 +29,7 @@ function Book(title, author, pages, read) {
         return `${this.title} ${this.author} ${this.pages} ${this.read}`;
     }
 }
+*/
 
 function addBookToLibrary(bookv) {
     myLibrary.push(bookv.info());
